@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>New Site</title>
+    <script src="/static/newsite.js"></script>
+    <script src="https://kit.fontawesome.com/74c0b2949d.js" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="/static/newsite.css">
+</head>
+<body>
+    <div class="slidebar" id="slidebar">
+        <div class="user">
+        <i id="ico" class="fa-regular fa-user "></i>
+        <h3 id="head">{{UserName}}</h3>
+    </div>
+        <ul>
+            <li class="list active">
+                <a href="/home">
+                    <span class="icon"><i class="fa-solid fa-house"></i></span>
+                    <span class="title" id="title1">Home</span>
+                </a>
+            </li>
+            <li class="list">
+                <a href="/newsite">
+                    <span class="icon"><i class="fa-solid fa-plus"></i></span>
+                    <span class="title" id="title2">New Site</span>
+                </a>
+            </li>
+            <li class="list">
+                <a href="#">
+                    <span class="icon"><i class="fa-regular fa-address-card"></i></span>
+                    <span class="title" id="title3">About</span>
+                </a>
+            </li>
+            <li class="list">
+                <a href="#">
+                    <span class="icon"><i class="fa-solid fa-phone"></i></span>
+                    <span class="title" id="title4">Contact</span>
+                </a>
+            </li>
+        </ul>
+    </div>
+    <div class="mytoggle" onclick="changeclass(this);" >
+        <ion-icon name="menu-outline" class="open"></ion-icon>
+        <ion-icon name="close-outline" class="close"></ion-icon>
+    </div>
+    <script>
+
+        let list=document.querySelectorAll('.list');
+    for (let i=0; i<list.length;i++){
+        list[i].onclick = function(){
+            let j=0;
+            while(j < list.length){
+                list[j++].className = 'list';
+            }
+            list[i].className = 'list active';
+        }
+    }
+    </script>
+    <div class="main" >
+        <div class="search">
+            <input type="search" id="search" name="search" placeholder="Search You Site">
+            <button><i class="fa-solid fa-magnifying-glass"></i></button>
+        </div> 
+        <!--Form I-->
+        <div class="box1" id="box1" >
+            <h4>Create Password</h4>
+            <button onclick="boxed1();">Click Here</button>
+        </div>
+        <div class="pop" id="pop">
+            <button id="btn1" class="btn1" onclick="pop1();">Generate</button>
+            <button id="btn2" class="btn2" onclick="boxed1();">back</button>
+            <button id="btn3" class="btn3" onclick="pop3();">Own Password</button>
+        </div>
+        <form class="pop1" id="pop1" action="/add" method="post">
+            <div class="input1">
+                <input type="text" id="inputField1" name="inputField1" title="Name of the website" required onclick="valid()">
+                <span id="message1">Platform</span>
+            </div>
+            <div class="input1">
+                <input type="text" id="inputField2" name="inputField2" title="Username in that website" required onclick="valid()">
+                <span id="message2">Username</span>
+            </div>
+            <div class="input1">
+                <input type="number" id="inputField3" name="inputField3" title="Length of the Password" required onclick="valid()">
+                <span id="message3">Length</span>
+            </div>
+            <p>{{message1}}</p>
+            <button class="btn4" id="btn4">submit</button>
+            <button class="btn5" id="btn5" onclick="back1();">back</button>
+        </form>
+        <form class="pop3" id="pop3" action="/add-own" method="post">
+            <div class="input1">
+                <input type="text" id="inputField4" name="inputField4" title="Charles River dummy variable" required onclick="valid()">
+                <span id="message4">Platform</span>
+            </div>
+            <div class="input1">
+                <input type="text" id="inputField5" name="inputField5" title="Nitric oxides concentration" required onclick="valid()">
+                <span id="message5">Username</span>
+            </div>
+            <div class="input1">
+                <input type="text" id="inputField6" name="inputField6" title="average number of rooms per dwelling" required onclick="valid()">
+                <span id="message6">Password</span>
+            </div>
+            <p>{{message2}}</p>
+            <button class="btn6" id="btn4">submit</button>
+            <button class="btn7" id="btn5" onclick="back2();">back</button>
+        </form>
+
+        <!--Form 2-->
+            <div class="box3" id="box3">
+                <h4>Want to Update </h4>
+                <h5>Password</h5>
+                <button  onclick="boxed2();">Click Here</button>
+            </div>  
+            <div class="pop2" id="pop2" >
+                <button id="btn8" class="btn8" onclick="pop4();">Generate</button>
+                <button id="btn9" class="btn9" onclick="boxed2();">back</button>
+                <button id="btn10" class="btn10" onclick="pop5();">Own Password</button>
+            </div>
+            <form class="pop4" id="pop4" action="/update" method="post">
+                <div class="input1">
+                    <input type="text" id="inputField7" name="inputField7" title="Name of the website" required onclick="valid()">
+                    <span id="message7">Platform</span>
+                </div>
+                <div class="input1">
+                    <input type="text" id="inputField8" name="inputField8" title="Username in that website" required onclick="valid()">
+                    <span id="message8">Username</span>
+                </div>
+                <div class="input1">
+                    <input type="text" id="inputField9" name="inputField9" title="Lenght of the password" required onclick="valid()">
+                    <span id="message9">Length</span>
+                </div>
+                <p>{{message3}}</p>
+                <button class="btn11" id="btn11">submit</button>
+                <button class="btn12" id="btn12" onclick="back3();">back</button>
+            </form>
+            <form class="pop5" id="pop5" action="/update-own" method="post">
+                <div class="input1">
+                    <input type="text" id="inputField10" name="inputField10" title="Name of the website" required onclick="valid()">
+                    <span id="message10">Platform</span>
+                </div>
+                <div class="input1">
+                    <input type="text" id="inputField11" name="inputField11" title="Username in the website" required onclick="valid()">
+                    <span id="message11">Username</span>
+                </div>
+                <div class="input1">
+                    <input type="text" id="inputField12" name="inputField12" title="New Password" required onclick="valid()">
+                    <span id="message12">Password</span>
+                </div>
+                <p>{{message4}}</p>
+                <button class="btn13" id="btn13">submit</button>
+                <button class="btn14" id="btn14" onclick="back4();">back</button>
+            </form>
+    </div>
+        
+        
+        <div class="area">
+            <ul class="circles">
+                <li></li>
+                <li></li>
+                <li></li>
+                <li></li>
+                <li></li>
+                <li></li>
+                <li></li>
+                <li></li>
+                <li></li>
+                <li></li>
+        </ul>
+        </div>
+    </div>
+    <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
+<script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
+</body>
+</html>
